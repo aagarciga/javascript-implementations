@@ -102,4 +102,41 @@ describe("LinkedList should", () => {
       expect(list.tail).toBeNull();
     });
   });
+
+  describe("work properly when shifting and", () => {
+    test("be able to shift one element when containing two", () => {
+      const list = new LinkedList();
+      list.push(7);
+      list.push(8);
+
+      expect(list.length).toBe(2);
+      expect(list.head.value).toEqual(7);
+      expect(list.tail.value).toEqual(8);
+
+      const node = list.shift();
+
+      expect(list.length).toBe(1);
+      expect(list.head.value).toBe(8);
+      expect(list.tail.value).toBe(8);
+      expect(node.value).toEqual(7);
+    });
+
+    test("be able to shift one element when containing one and be empty after that", () => {
+      const list = new LinkedList();
+      list.push(7);
+
+      expect(list.length).toBe(1);
+      expect(list.head.value).toEqual(7);
+
+      let node = list.shift();
+
+      expect(list.length).toBe(0);
+      expect(list.head).toBeNull();
+      expect(list.tail).toBeNull();
+      expect(node.value).toEqual(7);
+
+      node = list.shift();
+      expect(node).toBeUndefined();
+    });
+  });
 });

@@ -1,0 +1,15 @@
+{
+  "name": "algorithms",
+  "version": "1.0.0",
+  "description": "Algorithms and Data Structures implemented in JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --trace-warnings --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "author": "Alex Alvarez Gárciga <aagarciga@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "devDependencies": {
+    "jest": "^29.6.1"
+  }
+}

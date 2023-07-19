@@ -1,4 +1,4 @@
-import Node from "./Node";
+import ListNode from "./ListNode";
 
 export default class LinkedList {
   constructor() {
@@ -7,7 +7,7 @@ export default class LinkedList {
     this.length = 0;
   }
   push(value) {
-    const node = new Node(value);
+    const node = new ListNode(value);
     if (!this.head) {
       this.head = node;
     } else {
@@ -48,7 +48,7 @@ export default class LinkedList {
   }
 
   unshift(value) {
-    const node = new Node(value);
+    const node = new ListNode(value);
     if (!this.head) {
       this.head = node;
       this.tail = this.head;
@@ -85,7 +85,7 @@ export default class LinkedList {
     if (index === 0) return !!this.unshift(value);
     if (index === this.length) return !!this.push(value);
 
-    const node = new Node(value);
+    const node = new ListNode(value);
     const prevNode = this.get(index - 1);
     node.next = prevNode.next;
     prevNode.next = node;

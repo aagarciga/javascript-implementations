@@ -70,4 +70,13 @@ export default class LinkedList {
     }
     return current;
   }
+
+  set(index, value) {
+    let node = this.get(index);
+    if (node) {
+      node.value = value;
+      return true;
+    }
+    return false;
+  }
 }

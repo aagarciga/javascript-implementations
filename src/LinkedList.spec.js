@@ -199,4 +199,38 @@ describe("LinkedList should", () => {
       expect(node).toBeNull();
     });
   });
+
+  describe("work properly when setting from an index and", () => {
+    const list = new LinkedList();
+    list.push(7);
+    list.push(8);
+    list.push(9);
+
+    test("update the first node value", () => {
+      const result = list.set(0, 6);
+      const node = list.get(0);
+      expect(result).toBe(true);
+      expect(node.value).toBe(6);
+    });
+
+    test("update the second node value", () => {
+      const result = list.set(1, 5);
+      const node = list.get(1);
+      expect(result).toBe(true);
+      expect(node.value).toBe(5);
+    });
+
+    test("update the last node value", () => {
+      const lastIndex = list.length - 1;
+      const result = list.set(lastIndex, 4);
+      const node = list.get(lastIndex);
+      expect(result).toBe(true);
+      expect(node.value).toBe(4);
+    });
+
+    test("return false when out of index", () => {
+      const result = list.set(3, 3);
+      expect(result).toBe(false);
+    });
+  });
 });

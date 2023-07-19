@@ -46,4 +46,28 @@ export default class LinkedList {
     }
     return currentHead;
   }
+
+  unshift(value) {
+    const node = new Node(value);
+    if (!this.head) {
+      this.head = node;
+      this.tail = this.head;
+    } else {
+      node.next = this.head;
+      this.head = node;
+    }
+    this.length++;
+    return this;
+  }
+
+  get(index) {
+    if (index < 0 || index >= this.length) return null;
+    let counter = 0;
+    let current = this.head;
+    while (counter !== index) {
+      current = current.next;
+      counter++;
+    }
+    return current;
+  }
 }

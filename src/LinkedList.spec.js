@@ -139,4 +139,64 @@ describe("LinkedList should", () => {
       expect(node).toBeUndefined();
     });
   });
+
+  describe("work properly when unshifting and", () => {
+    test("be able to unshift one element when empty", () => {
+      const list = new LinkedList();
+
+      expect(list.length).toBe(0);
+      expect(list.head).toBeNull();
+      expect(list.tail).toBeNull();
+
+      let node = list.unshift(7);
+
+      expect(list.length).toBe(1);
+      expect(list.head.value).toEqual(7);
+      expect(list.tail.value).toEqual(7);
+      expect(list.tail.next).toBeNull();
+    });
+    test("be able to unshift one element when containing one", () => {
+      const list = new LinkedList();
+      list.push(7);
+
+      expect(list.length).toBe(1);
+      expect(list.head.value).toEqual(7);
+
+      list.unshift(8);
+
+      expect(list.length).toBe(2);
+      expect(list.head.value).toBe(8);
+      expect(list.tail.value).toBe(7);
+      expect(list.tail.next).toBeNull();
+    });
+  });
+
+  describe("work properly when getting from an index and", () => {
+    const list = new LinkedList();
+    list.push(7);
+    list.push(8);
+    list.push(9);
+
+    test("get the first element by passing 0 as index argument", () => {
+      const node = list.get(0);
+      expect(node.value).toBe(7);
+    });
+
+    test("get the second element by passing 1 as index argument", () => {
+      const node = list.get(1);
+      expect(node.value).toBe(8);
+    });
+
+    test("get the last element by passing length - 1 as index argument", () => {
+      const node = list.get(list.length - 1);
+      expect(node.value).toBe(9);
+    });
+
+    test("get null when index is outof boud or the list is emptpy", () => {
+      const emptyList = new LinkedList();
+      const node = emptyList.get(0);
+
+      expect(node).toBeNull();
+    });
+  });
 });

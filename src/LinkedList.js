@@ -104,4 +104,20 @@ export default class LinkedList {
     this.length--;
     return removedNode;
   }
+
+  reverse() {
+    let current = this.head;
+    this.head = this.tail;
+    this.tail = current;
+    let previous = null;
+    let next;
+    // for (let i = 0; i < this.length; i++) {
+    while (current) {
+      next = current.next;
+      current.next = previous;
+      previous = current;
+      current = next;
+    }
+    return this;
+  }
 }

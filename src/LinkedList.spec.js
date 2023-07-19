@@ -310,4 +310,31 @@ describe("LinkedList should", () => {
       expect(result).toBeUndefined();
     });
   });
+
+  describe("work properly when reversing the order of the nodes of the list and", () => {
+    const list = new LinkedList();
+    list.push(7);
+    list.push(8);
+    list.push(9);
+    list.push(10);
+    const refReversed = list.reverse();
+    test("all the nodes are in reverse order", () => {
+      expect(list.get(0).value).toBe(10);
+      expect(list.get(1).value).toBe(9);
+      expect(list.get(2).value).toBe(8);
+      expect(list.get(3).value).toBe(7);
+    });
+
+    test("the result is the reference of the reversed list", () => {
+      expect(refReversed.get(0).value).toBe(10);
+      expect(refReversed.get(1).value).toBe(9);
+      expect(refReversed.get(2).value).toBe(8);
+      expect(refReversed.get(3).value).toBe(7);
+    });
+
+    test("the head and the tail have the correct values for next", () => {
+      expect(list.head.next).toBeTruthy();
+      expect(list.tail.next).toBeNull();
+    });
+  });
 });

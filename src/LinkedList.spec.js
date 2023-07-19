@@ -233,4 +233,81 @@ describe("LinkedList should", () => {
       expect(result).toBe(false);
     });
   });
+
+  describe("work properly when inserting a value in an index and", () => {
+    const list = new LinkedList();
+    list.push(7);
+    list.push(8);
+    list.push(9);
+    test("be able to insert at the begining of the list", () => {
+      const result = list.insert(0, 6);
+      const node = list.get(0);
+      expect(result).toBe(true);
+      expect(node.value).toBe(6);
+      expect(list.length).toBe(4);
+    });
+
+    test("be able to insert at the end of the list", () => {
+      const lastIndex = list.length - 1;
+      const result = list.insert(lastIndex + 1, 10);
+      const node = list.get(lastIndex + 1);
+      expect(result).toBe(true);
+      expect(node.value).toBe(10);
+      expect(list.length).toBe(5);
+    });
+
+    test("be able to insert at the middle of the list", () => {
+      const middleIndex = Math.trunc(list.length / 2);
+      const result = list.insert(middleIndex, 8.7);
+      const node = list.get(middleIndex);
+      expect(result).toBe(true);
+      expect(node.value).toBe(8.7);
+      expect(list.length).toBe(6);
+    });
+
+    test("return false when out of index", () => {
+      const lastIndex = list.length;
+      const result = list.insert(lastIndex + 1, 11);
+      expect(result).toBe(false);
+    });
+  });
+
+  describe("work properly when removing a node from a specific position and", () => {
+    const list = new LinkedList();
+    list.push(6);
+    list.push(7);
+    list.push(8);
+    list.push(9);
+    list.push(10);
+
+    test("be able to remove the first element of the list", () => {
+      const result = list.remove(0);
+      const node = list.get(0);
+      expect(result.value).toBe(6);
+      expect(list.length).toBe(4);
+      expect(node.value).toBe(7);
+    });
+
+    test("be able to remove the last element of the list", () => {
+      const lastIndex = list.length - 1;
+      const result = list.remove(lastIndex);
+
+      expect(result.value).toBe(10);
+      expect(list.length).toBe(3);
+    });
+
+    test("be able to remove the middle element of the list", () => {
+      const middleIndex = Math.trunc(list.length / 2);
+      const result = list.remove(middleIndex);
+
+      expect(result.value).toBe(8);
+      expect(list.length).toBe(2);
+    });
+
+    test("return false when position is out of boundaries", () => {
+      const lastIndex = list.length;
+      const result = list.remove(lastIndex + 1);
+      expect(result).toBeUndefined();
+    });
+  });
 });
